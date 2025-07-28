@@ -28,7 +28,7 @@ class Informacion extends Model
     }
 
     public Static function obtenerContenidoxid($id){
-        return Informacion::select('description', 'informacion.division_id', 'titulo')
+        return Informacion::select('informacion.id', 'description', 'informacion.division_id', 'titulo')
                           ->where('informacion.id', '=', $id)
                           ->leftJoin('division', 'informacion.division_id', '=', 'division.id')
                           ->leftJoin('usuarios', 'informacion.user_id', '=', 'usuarios.id')

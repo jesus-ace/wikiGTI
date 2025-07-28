@@ -13,6 +13,6 @@ Route::prefix('admin')->group(function () {
     //     return view('admin.contenido');
     // });
     Route::get('/contenido', [InformationController::class, 'listContent']);
-
     Route::get('/contenido/editor/{id}', [InformationController::class, 'getContent']);
+    Route::post('/contenido/update', [InformationController::class, 'updateContenido'])->name('updateContenido'); //se pasa id por request
 });

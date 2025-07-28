@@ -324,7 +324,7 @@ return [
             'text' => 'Contenidos',
             'url' => 'admin/contenido',
             'icon' => 'far fa-fw fa-file',
-            'label' => 4,
+            'label' => 3, //poner dinamico
             'label_color' => 'success',
         ],
         ['header' => 'account_settings'],

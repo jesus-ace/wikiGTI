@@ -4,6 +4,11 @@
 
 @section('content_header')
     <h1>Editor de contenido</h1>
+    <div  id="allert-success" class="alert alert-success alert-dismissible d-none">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <h5><i class="icon fas fa-check"></i> Alert!</h5>
+        Success alert preview. This alert is dismissable.
+      </div>
 @stop
 
 @section('content')
@@ -29,12 +34,12 @@
             </div>
             <div class="row mt-5">
                 <div class="col">
-                    <textarea name="" id="contenido" cols="30" rows="10"></textarea>
+                    <textarea name="contenido" id="contenido" cols="30" rows="10"></textarea>
                 </div>
 
             </div>
             <div class="d-flex justify-content-end">
-                <button type="button" class="btn btn-success mt-5">Guardar</button>
+                <button type="button" class="btn btn-success mt-5" id="seve_content">Guardar</button>
             </div>
         </form>
     </div>
@@ -55,10 +60,41 @@
 <script>
     let data = @php echo $contenido @endphp;
     data.forEach(element => {
-        $('#titulo').val(element.titulo)
-        $('#division').val(element.division_id)
-        $('#contenido').val(element.description)
+        $('#titulo').val(element.titulo);
+        $('#division').val(element.division_id);
+        $('#contenido').val(element.description);
+
+        const id_content = element.id;
     });
+
+    $(document).ready(function() {
+        $('#seve_content').click(function() {
+            $.ajax({
+                url : '{{ route('updateContenido') }}',
+                type: "POST",
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                    'Accept': 'application/json'
+                },
+                data: {
+                    'id': data[0].id,
+                    'titulo': $('#titulo').val(),
+                    'division_id': $('#division').val(),
+                    'contenido':  CKEDITOR.instances.contenido.getData(),
+                },
+                success:  function(r){
+                    if(r === true){
+                        $('#allert-success').removeClass('d-none');
+                        $('#allert-success').addClass('d-block');
+                    }
+                }
+            });
+        });
+    });
+
+
+
+
 </script>
 <script>
     CKEDITOR.replace('contenido');
