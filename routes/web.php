@@ -15,4 +15,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/contenido', [InformationController::class, 'listContent']);
     Route::get('/contenido/editor/{id}', [InformationController::class, 'getContent']);
     Route::post('/contenido/update', [InformationController::class, 'updateContenido'])->name('updateContenido'); //se pasa id por request
+    /// New Content
+    Route::get('/contenido/editor', [InformationController::class, 'newContent']);
+    Route::post('/contenido/create', [InformationController::class, 'createContenido'])->name('createContenido');
 });

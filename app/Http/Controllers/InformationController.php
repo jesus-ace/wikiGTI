@@ -62,4 +62,42 @@ class InformationController extends Controller
             ], 500);
         }
     }
+
+    public function newContent(){
+        $division = Division::get();
+        return view('admin.new_content', compact('division'));
+    }
+
+    public function createContenido(Request $request){
+        $validated = $request->validate([
+            'titulo' => 'required|string|max:255',
+            'contenido' => 'required|string',
+            'division_id' => 'required|integer|exists:division,id',
+        ]);
+
+        try {
+            $create = Informacion::create([
+                'titulo' => $validated['titulo'],
+                'description' => $validated['contenido'],
+                'user_id' => 1, // usuario autentificado
+                'division_id' => $validated['division_id'],
+            ]);
+
+            return response()->json([
+                'success' => true,
+                'message' => $create ? 'Content create successfully' : 'Failed to create content',
+                'data' => $create
+            ]);
+
+
+        } catch (\Exception $e) {
+            \Log::error('Error updating content: ' . $e->getMessage());
+
+            return response()->json([
+                'success' => false,
+                'message' => 'An error occurred while updating content',
+                'error' => config('app.debug') ? $e->getMessage() : null
+            ], 500);
+        }
+    }
 }
