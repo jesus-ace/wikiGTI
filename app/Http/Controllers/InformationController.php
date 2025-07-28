@@ -21,21 +21,45 @@ class InformationController extends Controller
     }
 
     public function updateContenido(Request $request){
+        $validated = $request->validate([
+            'id' => 'required|integer|exists:informacion,id',
+            'titulo' => 'required|string|max:255',
+            'contenido' => 'required|string',
+            'division_id' => 'required|integer|exists:division,id',
+        ]);
+
         try {
-            $contenido = Informacion::where('id', '=', $request->id)->first();
-            if (isset($contenido)) {
-                $contenido->update([
-                    'titulo' => $request->titulo,
-                    'description' =>  $request->contenido,
-                    'user_id' => 1, ///logica para traer el usuario logueado
-                    'division_id' =>  $request->division_id,
-                ]);
+            $contenido = Informacion::find($validated['id']);
 
-                return true;
+            if (!$contenido) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Content not found'
+                ], 404);
             }
-        } catch (\Exception $e) {
-            dd($e);
-        }
 
+            $updated = $contenido->update([
+                'titulo' => $validated['titulo'],
+                'description' => $validated['contenido'],
+                'user_id' => 1, // usuario autentificado
+                'division_id' => $validated['division_id'],
+            ]);
+
+            return response()->json([
+                'success' => $updated,
+                'message' => $updated ? 'Content updated successfully' : 'Failed to update content',
+                'data' => $contenido
+            ]);
+
+
+        } catch (\Exception $e) {
+            \Log::error('Error updating content: ' . $e->getMessage());
+
+            return response()->json([
+                'success' => false,
+                'message' => 'An error occurred while updating content',
+                'error' => config('app.debug') ? $e->getMessage() : null
+            ], 500);
+        }
     }
 }

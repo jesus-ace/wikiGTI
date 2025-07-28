@@ -4,11 +4,13 @@
 
 @section('content_header')
     <h1>Editor de contenido</h1>
-    <div  id="allert-success" class="alert alert-success alert-dismissible d-none">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-        <h5><i class="icon fas fa-check"></i> Alert!</h5>
-        Success alert preview. This alert is dismissable.
-      </div>
+    <div id="allert-success" class="alert alert-success alert-dismissible d-none">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+        <h5><i class="icon fas fa-check"></i>¡Operación exitosa!</h5>
+        Los cambios se guardaron correctamente.
+    </div>
 @stop
 
 @section('content')
@@ -50,7 +52,7 @@
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
+    {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
     <link rel="stylesheet" href="/vendor/bootstrap/js/bootstrap.min.js">
 @stop
 
@@ -83,7 +85,7 @@
                     'contenido':  CKEDITOR.instances.contenido.getData(),
                 },
                 success:  function(r){
-                    if(r === true){
+                    if(r.success == true){
                         $('#allert-success').removeClass('d-none');
                         $('#allert-success').addClass('d-block');
                     }
