@@ -1,7 +1,5 @@
 @extends('adminlte::page')
-
 @section('title', 'Dashboard')
-
 @section('content_header')
     <h1>Contenido</h1>
 @stop
@@ -28,40 +26,67 @@ $btnDetails = '<button class="btn btn-xs btn-default text-teal mx-1 shadow" titl
                </button>';
 
 $config = [
-    'data' => $data,
+    'order' => [[0, 'asc']],
     'order' => [[1, 'asc']],
-    'columns' => [null, null, null, ['orderable' => false]]
+    'language' => [
+        'url' => '//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json'
+    ]
 ];
 
 
 @endphp
+<div class="card card-outline card-primary">
+    <div class="card-header">
+        <div class="d-flex justify-content-end">
+            <button type="button" class="btn btn-success">
+                 <a href="{{ route('newContent') }}" style="color:#ffff !important"> AGREGAR <i class="fa-solid fa-plus"></i> </a>
+            </button>
+        </div>
+    </div>
 
-<x-adminlte-datatable id="table1" :heads="$heads" :config="$config" theme="light"   striped hoverable with-buttons>
-    @foreach($config['data'] as $row)
-        <tr>
-            <td>{{$row['id']}}</td>
-            <td>{{$row['nombre']}} {{$row['apellido']}}</td>
-            <td>{{$row['division']}}</td>
-            <td>{{$row['titulo']}}</td>
-            <td><nobr>
-                <button class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
-                   <a class="fa fa-lg fa-fw fa-pen" href="/admin/contenido/editor/{{$row['id']}}"></a>
-                </button>
-                <button class="btn btn-xs btn-default text-danger mx-1 shadow" title="Delete">
-                  <i class="fa fa-lg fa-fw fa-trash"></i>
-                </button>
-                <button class="btn btn-xs btn-default text-teal mx-1 shadow" title="Details">
-                   <i class="fa fa-lg fa-fw fa-eye"></i>
-               </button></nobr></td>
-        </tr>
-    @endforeach
-</x-adminlte-datatable>
+    <div class="card-body">
+        <x-adminlte-datatable id="table1" :heads="$heads" :config="$config" theme="light" striped hoverable with-buttons>
+            @foreach($data as $row)
+                <tr>
+                    <td>{{$row['id']}}</td>
+                    <td>{{$row['nombre']}} {{$row['apellido']}}</td>
+                    <td>{{$row['division']}}</td>
+                    <td>{{$row['titulo']}}</td>
+                    <td><nobr>
+                        <button class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
+                           <a class="fa fa-lg fa-fw fa-pen" href="/admin/contenido/editor/{{$row['id']}}"></a>
+                        </button>
+                        <button class="btn btn-xs btn-default text-danger mx-1 shadow" title="Delete">
+                          <i class="fa fa-lg fa-fw fa-trash"></i>
+                        </button>
+                        <button class="btn btn-xs btn-default text-teal mx-1 shadow" title="Details">
+                           <i class="fa fa-lg fa-fw fa-eye"></i>
+                       </button></nobr></td>
+                </tr>
+            @endforeach
+        </x-adminlte-datatable>
+    </div>
+</div>
+
 
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
+    {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
+    <link rel="stylesheet" href="/vendor/datatables/css/dataTables.bootstrap4.min.css">
 @stop
 
 @section('js')
+    <script src="/vendor/datatables/js/jquery.dataTables.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            // Initialize DataTables with proper error handling
+            try {
+                $('#table1').DataTable();
+            } catch (e) {
+                console.error('DataTable initialization error:', e);
+            }
+        });
+    </script>
 @stop
