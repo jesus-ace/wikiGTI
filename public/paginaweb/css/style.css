@@ -1,0 +1,99 @@
+body {
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    line-height: 1.42857;
+    color: #222;
+    width: 100%;
+    overflow-x: none;
+    -webkit-overflow-scrolling: touch;
+}
+/* Panel  izquierdo */
+.panel {
+    box-shadow: none;
+    display: block;
+}
+
+
+.banner-urgencias, .panel, .panel-group {
+    margin-bottom: 8px;
+}
+
+.panel-default {
+    border-color: #e8e8e8;
+}
+.panel {
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+.panel, .panel-footer {
+    background-color: #fff;
+}
+
+.panel-default>.panel-heading {
+    color: #222;
+    background-color: #fff;
+    border-color: #e8e8e8;
+}
+.panel-default>.panel-heading {
+    color: #333;
+    background-color: #f5f5f5;
+    border-color: #ddd;
+}
+.panel-heading-alt {
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+    color: #fff !important;
+}
+.panel-featured-top-heading::after, .panel-featured::after, .panel-heading-alt {
+    background: -webkit-linear-gradient(45deg, #099 0, #56b36b 100%);
+    background: linear-gradient(45deg, #099 0, #56b36b 100%);
+}
+.nav-header-featured, .panel-featured-top-heading::after, .panel-featured::after, .panel-heading-alt {
+    background-color: #099;
+}
+.featured-title, .panel-banner-title, .panel-featured-title, .panel-heading-alt, h1 {
+    font-family: Nunito, sans-serif;
+}
+.panel-heading {
+    padding: 8px 15px;
+    border-bottom: 1px solid transparent;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+}
+.panel-heading {
+    padding: 10px 15px;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+.panel-body {
+    padding: 15px;
+}
+
+
+
+/* Panel derecho */
+
+.nuevo-panel {
+    border: solid 1px #f0f0f0 !important;
+    border-radius: 5px !important;
+    background-color: #FFFFFF;
+}
+.nuevo-panel>.accesos-principal, .nuevo-panel>.panel-body {
+    border: none !important;
+    border-radius: none !important;
+    background-color: transparent !important;
+}
+.nuevo-panel>div>span {
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    text-align: center !important;
+    padding-bottom: 5px !important;
+    color: #008080 !important;
+    padding-top: 15px !important;
+    margin-top: 2px;
+    margin-bottom: 5px;
+    display: block;
+}

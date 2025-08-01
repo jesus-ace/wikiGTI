@@ -57,7 +57,8 @@
 @stop
 
 @section('js')
-<script src="/vendor/ckeditor/ckeditor.js"></script>
+{{-- <script src="/vendor/ckeditor/ckeditor.js"></script> --}}
+<script src="https://cdn.ckeditor.com/ckeditor5/41.1.0/classic/ckeditor.js"></script>
 <script src="/vendor/jquery/jquery.min.js"></script>
 <script>
     $(document).ready(function() {
