@@ -100,4 +100,11 @@ class InformationController extends Controller
             ], 500);
         }
     }
+
+    public function mostrarmanual(){
+
+        $manuales =  Informacion::manuales();
+        $contenido = Informacion::manual();
+        return view('pagina.contenido', compact('manuales', 'contenido'));
+    }
 }

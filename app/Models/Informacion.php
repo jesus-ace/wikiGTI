@@ -34,4 +34,14 @@ class Informacion extends Model
                           ->leftJoin('usuarios', 'informacion.user_id', '=', 'usuarios.id')
                           ->get();
     }
+
+    public static function manuales(){
+        return  Informacion::select('id', 'titulo')->get();
+    }
+
+    // manual por division en especifico
+    public static function manual(){
+         // Debe resibir parametros de id division y  el id del manual esto via url
+        return  Informacion::where('id', '=', 2)->first();
+    }
 }
