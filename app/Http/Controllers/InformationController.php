@@ -101,10 +101,9 @@ class InformationController extends Controller
         }
     }
 
-    public function mostrarmanual(){
-
-        $manuales =  Informacion::manuales();
-        $contenido = Informacion::manual();
+    public function mostrarmanual(Request $request){
+        $manuales =  Informacion::manuales($request->division);
+        $contenido = Informacion::manual($request->division, $request->manual);
         return view('pagina.contenido', compact('manuales', 'contenido'));
     }
 }

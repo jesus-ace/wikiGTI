@@ -3,8 +3,9 @@
         <div class="panel panel-primary nuevo-panel">
             <div class="accesos-principal">
                 <span id="reservahorah2">
-                    RESERVA TU HORA
+                    Manuales
                 </span>
+                <a href="https://agenda.redsalud.cl/" class="btn btn-primary btn-lg btn-block btn-color-1">Soporte</a>
             </div>
             <div class="nuestra-red">
                 <span id="nuestraredh2">NUESTRA RED</span>

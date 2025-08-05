@@ -28,20 +28,27 @@ class Informacion extends Model
     }
 
     public Static function obtenerContenidoxid($id){
-        return Informacion::select('informacion.id', 'description', 'informacion.division_id', 'titulo')
+        return Informacion::select('informacion.id', 'description','titulo', 'informacion.division_id', 'nombre', 'apellido')
                           ->where('informacion.id', '=', $id)
                           ->leftJoin('division', 'informacion.division_id', '=', 'division.id')
                           ->leftJoin('usuarios', 'informacion.user_id', '=', 'usuarios.id')
                           ->get();
     }
 
-    public static function manuales(){
-        return  Informacion::select('id', 'titulo')->get();
+    public static function manuales($division){
+        return  Informacion::select('id', 'division_id', 'titulo')
+                           ->where('division_id', '=', $division)
+                           ->get();
     }
 
     // manual por division en especifico
-    public static function manual(){
-         // Debe resibir parametros de id division y  el id del manual esto via url
-        return  Informacion::where('id', '=', 2)->first();
+    public static function manual($division, $id_manual){
+         // Debe recibir parametros de id division y  el id del manual esto via url
+        return  Informacion::select('informacion.id', 'titulo', 'description', 'informacion.division_id', 'nombre', 'apellido', 'division')
+                            ->leftJoin('division', 'informacion.division_id', '=', 'division.id')
+                            ->leftJoin('usuarios', 'informacion.user_id', '=', 'usuarios.id')
+                            ->where('informacion.division_id', '=', $division)
+                            ->where('informacion.id', '=', $id_manual)
+                            ->first();
     }
 }

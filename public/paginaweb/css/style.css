@@ -7,6 +7,20 @@ body {
     overflow-x: none;
     -webkit-overflow-scrolling: touch;
 }
+.img-thumbnail, body {
+    background-color: #f6f6f6;
+}
+
+.navbar{
+    background: -webkit-linear-gradient(45deg, #337ab7 40%, #ff259d 100%);
+    background: linear-gradient(45deg, #337ab7 40%, #ff259d 100%);
+}
+
+.nav-link {
+    color: #fff !important;
+    text-decoration: none;
+}
+
 /* Panel  izquierdo */
 .panel {
     box-shadow: none;
@@ -72,8 +86,10 @@ body {
     padding: 15px;
     overflow: scroll;
     overflow-x: hidden;
+    scrollbar-width: thin;          /* "auto" or "thin" */
     scrollbar-color: #337ab7 #e8e8e8;
     height: 559px;
+    border: 1px solid rgba(0, 0, 0, .125);
 }
 
 
@@ -95,7 +111,7 @@ body {
     font-weight: 600 !important;
     text-align: center !important;
     padding-bottom: 5px !important;
-    color: #008080 !important;
+    color: #337ab7 !important;
     padding-top: 15px !important;
     margin-top: 2px;
     margin-bottom: 5px;
@@ -112,6 +128,14 @@ body {
     color: #337ab7;
     border-left: 3px solid #337ab7 ;
     background-color: #f5f5f5;
+}
+
+.active-hover {
+    text-decoration: none;
+    border-left: 3px solid #337ab7 ;
+    background-color: #f5f5f5;
+    color: #666;
+    text-decoration: none;
 }
 
 
@@ -155,3 +179,64 @@ ol, ul {
     margin-top: 3px;
 }
 
+
+/* Botones parte derecha */
+.nuevo-panel>.accesos-principal, .nuevo-panel>.panel-body {
+    border: none !important;
+    border-radius: none !important;
+    background-color: transparent !important;
+}
+.nuevo-panel>.accesos-principal>a {
+    width: 85% !important;
+    color: #FFFFFF !important;
+    font-size: 16px;
+    font-weight: 400 !important;
+    /* height: 30px; */
+    padding: 5px !important;
+    border-color: transparent !important;
+    border-radius: 5px !important;
+}
+.btn-color-1 {
+    background-color: #337ab7 !important;
+}
+.btn-block {
+    max-width: 80vw;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    margin-top: 7px;
+    margin-bottom: 7px;
+}
+
+@media (min-width: 992px) {
+    .right-column {
+        padding-right: 0;
+        padding-left: 12px;
+    }
+}
+
+.img-autor{
+    /* width: 85% !important; */
+    max-width: 80vw;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    margin-bottom : 7px;
+}
+.img-autor > img{
+    border-radius: 100% !important;
+    width: 148px;
+    height: 148px;
+    border: 2px #337ab7 solid;
+}
+.nom-autor{
+    width: 85% !important;
+    max-width: 80vw;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    color: #337ab7;
+    margin-bottom: 7px;
+}

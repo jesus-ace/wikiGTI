@@ -20,4 +20,4 @@ Route::prefix('admin')->group(function () {
     Route::post('/contenido/create', [InformationController::class, 'createContenido'])->name('createContenido');
 });
 
-Route::get('wikiGti', [InformationController::class, 'mostrarmanual']);
+Route::get('wikiGti/{division}/{manual}', [InformationController::class, 'mostrarmanual'])->name('mostrarmanual');
