@@ -58,6 +58,7 @@
 
 @section('js')
 <script src="/vendor/ckeditor/ckeditor.js"></script>
+<script src="https://cdn.ckeditor.com/4.24.0-lts/standard/ckeditor.js"></script>
 <script src="/vendor/jquery/jquery.min.js"></script>
 <script>
     let data = @php echo $contenido @endphp;

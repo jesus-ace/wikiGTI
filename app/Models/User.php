@@ -22,6 +22,7 @@ class User extends Authenticatable
         'nombre',
         'apellido',
         'username',
+        'email',
         'rol_id',
         'division_id',
         'password'

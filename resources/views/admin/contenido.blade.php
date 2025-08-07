@@ -78,7 +78,8 @@ $config = [
 
 @section('js')
     <script src="/vendor/datatables/js/jquery.dataTables.min.js"></script>
-
+    <script src="/vendor/ckeditor/ckeditor.js"></script>
+    <script src="https://cdn.ckeditor.com/4.24.0-lts/standard/ckeditor.js"></script>
     <script>
         $(document).ready(function() {
             // Initialize DataTables with proper error handling

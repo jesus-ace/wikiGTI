@@ -101,6 +101,13 @@ class InformationController extends Controller
         }
     }
 
+    public function index(){
+        $soporte = Informacion::getSoporte();
+        $redes = Informacion::getRedes();
+        $desarrollo = Informacion::getDesarrollo();
+        return view('pagina.home', compact('soporte', 'redes', 'desarrollo'));
+    }
+
     public function mostrarmanual(Request $request){
         $manuales =  Informacion::manuales($request->division);
         $contenido = Informacion::manual($request->division, $request->manual);

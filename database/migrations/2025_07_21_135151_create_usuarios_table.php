@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('nombre');
             $table->string('apellido');
             $table->string('username');
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
             $table->unsignedBigInteger('rol_id');
             $table->foreign('rol_id')
                 ->references('id')
@@ -28,7 +30,10 @@ return new class extends Migration
                     ->on('division')
                     ->onDelete('cascade');
             $table->string('password');
+            $table->rememberToken();
             $table->timestamps();
+
+
         });
     }
 

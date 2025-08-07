@@ -36,7 +36,10 @@
             </div>
             <div class="row mt-5">
                 <div class="col">
-                    <textarea name="contenido" id="contenido" cols="30" rows="10"></textarea>
+                    {{-- <div id="editor">
+                        <p>Hello from CKEditor 5!</p>
+                    </div> --}}
+                    <textarea name="editor" id="editor" ></textarea>
                 </div>
 
             </div>
@@ -54,12 +57,53 @@
 @section('css')
     {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
     <link rel="stylesheet" href="/vendor/bootstrap/js/bootstrap.min.js">
+    <link rel="stylesheet" href="">
 @stop
 
 @section('js')
-{{-- <script src="/vendor/ckeditor/ckeditor.js"></script> --}}
-<script src="https://cdn.ckeditor.com/ckeditor5/41.1.0/classic/ckeditor.js"></script>
+
+<script src=""></script>
+
 <script src="/vendor/jquery/jquery.min.js"></script>
+
+<script>
+    tinymce.init({
+        selector: 'textarea',
+        plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+    });
+</script>
+
+
+
+{{-- <script>
+    const {
+        ClassicEditor,
+        Essentials,
+        Paragraph,
+        Bold,
+        Italic,
+        Font
+    } = CKEDITOR;
+    // Create a free account and get <YOUR_LICENSE_KEY>
+    // https://portal.ckeditor.com/checkout?plan=free
+    ClassicEditor
+        .create( document.querySelector( '#editor' ), {
+            licenseKey: '<YOUR_LICENSE_KEY>',
+            plugins: [ Essentials, Paragraph, Bold, Italic, Font ],
+            toolbar: [
+                'undo', 'redo', '|', 'bold', 'italic', '|',
+                'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor'
+            ]
+        } )
+        .then( editor => {
+            window.editor = editor;
+        } )
+        .catch( error => {
+            console.error( error );
+        } );
+</script> --}}
+
 <script>
     $(document).ready(function() {
         $('#seve_content').click(function() {
@@ -84,12 +128,6 @@
             });
         });
     });
-
-
-
-
 </script>
-<script>
-    CKEDITOR.replace('contenido');
-</script>
+
 @stop

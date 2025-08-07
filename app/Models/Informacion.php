@@ -51,4 +51,28 @@ class Informacion extends Model
                             ->where('informacion.id', '=', $id_manual)
                             ->first();
     }
+
+    public static function getSoporte(){
+        return Informacion::select('informacion.id', 'titulo', 'description', 'informacion.division_id', 'nombre', 'apellido', 'division')
+                            ->leftJoin('division', 'informacion.division_id', '=', 'division.id')
+                            ->leftJoin('usuarios', 'informacion.user_id', '=', 'usuarios.id')
+                            ->where('informacion.division_id', '=', 1)
+                            ->get();
+    }
+
+    public static function getRedes(){
+        return Informacion::select('informacion.id', 'titulo', 'description', 'informacion.division_id', 'nombre', 'apellido', 'division')
+                            ->leftJoin('division', 'informacion.division_id', '=', 'division.id')
+                            ->leftJoin('usuarios', 'informacion.user_id', '=', 'usuarios.id')
+                            ->where('informacion.division_id', '=', 2)
+                            ->get();
+    }
+
+    public static function getDesarrollo(){
+        return Informacion::select('informacion.id', 'titulo', 'description', 'informacion.division_id', 'nombre', 'apellido', 'division')
+                            ->leftJoin('division', 'informacion.division_id', '=', 'division.id')
+                            ->leftJoin('usuarios', 'informacion.user_id', '=', 'usuarios.id')
+                            ->where('informacion.division_id', '=', 3)
+                            ->get();
+    }
 }

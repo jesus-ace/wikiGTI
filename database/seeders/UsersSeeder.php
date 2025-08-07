@@ -19,6 +19,7 @@ class UsersSeeder extends Seeder
                 'nombre' => 'Jesus Alejandro',
                 'apellido' => 'Acevedo Meneses',
                 'username' => 'jacevedom',
+                'email' => 'jacevedom@vive.gob.ve',
                 'rol_id' => 1,
                 'division_id' => 3,
                 'password' => '@J27647120a**'
