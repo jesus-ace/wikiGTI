@@ -36,7 +36,7 @@
             </div>
             <div class="row mt-5">
                 <div class="col">
-                    <textarea name="contenido" id="contenido" cols="30" rows="10"></textarea>
+                    <textarea name="contenido" id="editor"></textarea>
                 </div>
 
             </div>
@@ -52,13 +52,21 @@
 @stop
 
 @section('css')
-    {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
     <link rel="stylesheet" href="/vendor/bootstrap/js/bootstrap.min.js">
 @stop
 
 @section('js')
-<script src="/vendor/ckeditor/ckeditor.js"></script>
-<script src="https://cdn.ckeditor.com/4.24.0-lts/standard/ckeditor.js"></script>
+<script src="/vendor/tinymce/tinymce.min.js"></script>
+
+<script src="/vendor/jquery/jquery.min.js"></script>
+
+<script>
+    tinymce.init({
+        selector: 'textarea',
+        plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+    });
+</script>
 <script src="/vendor/jquery/jquery.min.js"></script>
 <script>
     let data = @php echo $contenido @endphp;
@@ -83,7 +91,7 @@
                     'id': data[0].id,
                     'titulo': $('#titulo').val(),
                     'division_id': $('#division').val(),
-                    'contenido':  CKEDITOR.instances.contenido.getData(),
+                    'contenido':  tinymce.get('editor').getContent()
                 },
                 success:  function(r){
                     if(r.success == true){
@@ -99,7 +107,5 @@
 
 
 </script>
-<script>
-    CKEDITOR.replace('contenido');
-</script>
+
 @stop

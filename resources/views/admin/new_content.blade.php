@@ -62,7 +62,7 @@
 
 @section('js')
 
-<script src=""></script>
+<script src="/vendor/tinymce/tinymce.min.js"></script>
 
 <script src="/vendor/jquery/jquery.min.js"></script>
 
@@ -73,36 +73,6 @@
         toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
     });
 </script>
-
-
-
-{{-- <script>
-    const {
-        ClassicEditor,
-        Essentials,
-        Paragraph,
-        Bold,
-        Italic,
-        Font
-    } = CKEDITOR;
-    // Create a free account and get <YOUR_LICENSE_KEY>
-    // https://portal.ckeditor.com/checkout?plan=free
-    ClassicEditor
-        .create( document.querySelector( '#editor' ), {
-            licenseKey: '<YOUR_LICENSE_KEY>',
-            plugins: [ Essentials, Paragraph, Bold, Italic, Font ],
-            toolbar: [
-                'undo', 'redo', '|', 'bold', 'italic', '|',
-                'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor'
-            ]
-        } )
-        .then( editor => {
-            window.editor = editor;
-        } )
-        .catch( error => {
-            console.error( error );
-        } );
-</script> --}}
 
 <script>
     $(document).ready(function() {
@@ -117,7 +87,7 @@
                 data: {
                     'titulo': $('#titulo').val(),
                     'division_id': $('#division').val(),
-                    'contenido':  CKEDITOR.instances.contenido.getData(),
+                    'contenido':  tinymce.get('editor').getContent()
                 },
                 success:  function(r){
                     if(r.success == true){
