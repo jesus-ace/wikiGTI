@@ -3,21 +3,17 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InformationController;
 
-Route::get('dashboard', function () {
-    return view('welcome');
-});
 
-
-// Route::get('login', function(){
-//     return view('auth.register')->name('login-new');
-// });
 
 Route::get('login', 'App\Http\Controllers\Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'App\Http\Controllers\Auth\LoginController@login');
 Route::post('logout', 'App\Http\Controllers\Auth\LoginController@logout')->name('logout');
 
 
-Route::prefix('admin')->group(function () {
+Route::middleware(['auth'])->prefix('admin')->group(function () {
+        Route::get('/dashboard', function () {
+        return view('welcome');
+    });
     Route::get('/contenido', [InformationController::class, 'listContent']);
     Route::get('/contenido/editor/{id}', [InformationController::class, 'getContent']);
     Route::post('/contenido/update', [InformationController::class, 'updateContenido'])->name('updateContenido'); //se pasa id por request

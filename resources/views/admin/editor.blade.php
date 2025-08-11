@@ -73,7 +73,7 @@
     data.forEach(element => {
         $('#titulo').val(element.titulo);
         $('#division').val(element.division_id);
-        $('#contenido').val(element.description);
+        $('#editor').val(element.description);
 
         const id_content = element.id;
     });
