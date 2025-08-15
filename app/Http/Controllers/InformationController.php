@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Roles;
 use App\Models\Division;
 use App\Models\Informacion;
@@ -41,7 +42,7 @@ class InformationController extends Controller
             $updated = $contenido->update([
                 'titulo' => $validated['titulo'],
                 'description' => $validated['contenido'],
-                'user_id' => 1, // usuario autentificado
+                'user_id' => Auth::id(), // usuario autentificado
                 'division_id' => $validated['division_id'],
             ]);
 
@@ -79,7 +80,7 @@ class InformationController extends Controller
             $create = Informacion::create([
                 'titulo' => $validated['titulo'],
                 'description' => $validated['contenido'],
-                'user_id' => 1, // usuario autentificado
+                'user_id' => Auth::id(), // usuario autentificado
                 'division_id' => $validated['division_id'],
             ]);
 

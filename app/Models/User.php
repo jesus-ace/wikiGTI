@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+use App\Models\Roles;
+
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
@@ -18,7 +20,7 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'celdula',
+        'cedula',
         'nombre',
         'apellido',
         'username',
@@ -51,5 +53,12 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public static function listUser(){
+        return User::select('usuarios.id','cedula','nombre','apellido','username','email', 'division', 'rol')
+                   ->leftJoin('rols', 'usuarios.rol_id', 'rols.id')
+                   ->leftJoin('division', 'usuarios.division_id', 'division.id')
+                   ->get();
     }
 }

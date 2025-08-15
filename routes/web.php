@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InformationController;
-
+use App\Http\Controllers\UsuariosController;
 
 
 Route::get('login', 'App\Http\Controllers\Auth\LoginController@showLoginForm')->name('login');
@@ -20,6 +20,13 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     /// New Content
     Route::get('/contenido/editor', [InformationController::class, 'newContent'])->name('newContent');
     Route::post('/contenido/create', [InformationController::class, 'createContenido'])->name('createContenido');
+
+    // rutas que corresponden al registros de usuarios
+    Route::get('/usuarios/listados', [UsuariosController::class, 'userList'])->name('userList');
+    Route::get('/usuarios/registrar', [UsuariosController::class, 'userRegister'])->name('userRegister');
+    Route::post('/usuarios/registrar', [UsuariosController::class, 'registroUser'])->name('registroUser');
+
+    Route::post('/buscarLDAP', [UsuariosController::class, '_findUserAdd'])->name('buscarLDAP');
 });
 
 Route::get('wikiGti', [InformationController::class, 'index'])->name('inicio');

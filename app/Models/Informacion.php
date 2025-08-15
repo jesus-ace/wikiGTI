@@ -75,4 +75,5 @@ class Informacion extends Model
                             ->where('informacion.division_id', '=', 3)
                             ->get();
     }
+
 }

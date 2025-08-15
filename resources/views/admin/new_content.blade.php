@@ -1,7 +1,9 @@
 @extends('adminlte::page')
 
 @section('title', 'Dashboard')
-
+<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+    @csrf
+</form>
 @section('content_header')
     <h1>Editor de contenido</h1>
     <div id="allert-success" class="alert alert-success alert-dismissible d-none">

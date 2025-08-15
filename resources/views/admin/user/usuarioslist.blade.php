@@ -10,8 +10,11 @@
 $heads = [
     'ID',
     'Autor',
-    ['label' => 'Divison', 'width' => 40],
-    ['label' => 'Manual', 'width' => 40],
+    'Cedula',
+    'Username',
+    'Email',
+    'Divison',
+    'Rol',
     ['label' => 'Actions', 'no-export' => true, 'width' => 5],
 ];
 
@@ -39,7 +42,7 @@ $config = [
     <div class="card-header">
         <div class="d-flex justify-content-end">
             <button type="button" class="btn btn-success">
-                 <a href="{{ route('newContent') }}" style="color:#ffff !important"> AGREGAR <i class="fas fa-fw fa-plus"></i> </a>
+                 <a href="{{ route('userRegister') }}" style="color:#ffff !important"> Registrar Usuario <i class="fas fa-fw fa-plus"></i> </a>
             </button>
         </div>
     </div>
@@ -50,8 +53,11 @@ $config = [
                 <tr>
                     <td>{{$row['id']}}</td>
                     <td>{{$row['nombre']}} {{$row['apellido']}}</td>
+                    <td>{{$row['celdula']}}</td>
+                    <td>{{$row['username']}}</td> 
+                    <td>{{$row['email']}}</td> 
                     <td>{{$row['division']}}</td>
-                    <td>{{$row['titulo']}}</td>
+                    <td>{{$row['rol']}}</td>
                     <td><nobr>
                         <button class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
                            <a class="fa fa-lg fa-fw fa-pen" href="/admin/contenido/editor/{{$row['id']}}"></a>
