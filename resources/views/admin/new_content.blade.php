@@ -1,4 +1,10 @@
+<!DOCTYPE html>
 @extends('adminlte::page')
+@section('meta')
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="UTF-8">
+@stop
+
 
 @section('title', 'Dashboard')
 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -69,10 +75,12 @@
 <script src="/vendor/jquery/jquery.min.js"></script>
 
 <script>
-    tinymce.init({
-        selector: 'textarea',
-        plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
-        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+    $(document).ready(function() {
+        tinymce.init({
+            selector: '#editor',
+            plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+        });
     });
 </script>
 

@@ -61,7 +61,6 @@ class UsuariosController extends Controller
                     $acounts["nombre"] = $perfil[$i]["givenname"][0];
                     $acounts["apellido"] = $perfil[$i]["sn"][0];
                     $acounts["password"] =  $perfil[$i]["userpassword"][0];
-                    // dd(base64_decode(sha1($perfil[$i]["userpassword"][0], true)));
 
                 }
                 return json_encode($acounts);
