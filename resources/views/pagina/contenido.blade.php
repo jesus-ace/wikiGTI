@@ -35,7 +35,7 @@
                     @foreach ($manuales as $manual)
                         @if ($manual->id === $contenido->id)
                             <div class="list-group-item nav-header list-group-item-first hidden-lg active-hover">
-                                <a href="{{ route('mostrarmanual', ['division' => $contenido->division_id, 'manual' => $manual->id]) }}" class="list-group-item-link">{{$manual->titulo}}</a>
+                                <a href="{{ route('mostrarmanual', ['division' => $manual->division, 'manual' => $manual->titulo]) }}" class="list-group-item-link">{{$manual->titulo}}</a>
 
                                 <span href="#menu2" data-toggle="collapse" data-parent="#section-menu" class="nav-link-container visible-xs-block">
                                     <i class="nav-link ion-chevron-up">
@@ -46,7 +46,7 @@
                             </div>
                         @else
                             <div class="list-group-item nav-header list-group-item-first hidden-lg">
-                                <a href="{{ route('mostrarmanual', ['division' => $contenido->division_id, 'manual' => $manual->id]) }}" class="list-group-item-link">{{$manual->titulo}}</a>
+                                <a href="{{ route('mostrarmanual', ['division' => $manual->division, 'manual' => $manual->titulo]) }}" class="list-group-item-link">{{$manual->titulo}}</a>
 
                                 <span href="#menu2" data-toggle="collapse" data-parent="#section-menu" class="nav-link-container visible-xs-block">
                                     <i class="nav-link ion-chevron-up">
@@ -97,6 +97,7 @@
                 <div class="panel panel-primary nuevo-panel">
                     <div class="accesos-principal">
                         <span id="reservahorah2"> MANUALES </span>
+                        
                         <a href="" class="btn btn-primary btn-lg btn-block">Soporte</a>
                         <a href="" class="btn btn-primary btn-lg btn-block">Redes</a>
                         <a href="" class="btn btn-primary btn-lg btn-block">Desarrollo</a>

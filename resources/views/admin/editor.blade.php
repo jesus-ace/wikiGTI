@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 @extends('adminlte::page')
-
-@section('title', 'Dashboard')
 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-    @csrf
-</form>
+        @csrf
+    </form>
+@section('title', 'Dashboard')
+
 @section('content_header')
     <h1>Editor de contenido</h1>
     <div id="allert-success" class="alert alert-success alert-dismissible d-none">
@@ -55,13 +55,13 @@
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="/vendor/bootstrap/js/bootstrap.min.js">
+    <link rel="stylesheet" href=" {{asset('vendor/bootstrap/js/bootstrap.min.js')}}">
 @stop
 
 @section('js')
-<script src="/vendor/tinymce/tinymce.min.js"></script>
+<script src="{{asset('vendor/tinymce/tinymce.min.js')}}"></script>
 
-<script src="/vendor/jquery/jquery.min.js"></script>
+<script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
 
 <script>
     tinymce.init({
@@ -70,7 +70,7 @@
         toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
     });
 </script>
-<script src="/vendor/jquery/jquery.min.js"></script>
+<script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
 <script>
     let data = @php echo $contenido @endphp;
     data.forEach(element => {

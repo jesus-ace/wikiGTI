@@ -20,9 +20,6 @@ class UsuariosController extends Controller
         $rol = Roles::get();
         return view('admin.user.registro', compact('division', 'rol'));
     }
-
-
-
     // Busaqueda por Ldap
 
     private function _OnConn(){
@@ -74,6 +71,63 @@ class UsuariosController extends Controller
     }
 
     public function registroUser(Request $request){
-        dd($request);
+
+        try {
+            $buscar_user =  User::where('cedula', '=', $request->cedula)->first();
+            if (!isset($buscar_user)) {
+                User::create([
+                    'cedula' => $request->cedula,
+                    'nombre' => $request->nombre,
+                    'apellido' => $request->apellido,
+                    'username' => $request->username,
+                    'email' => $request->correo,
+                    'rol_id' => $request->rol,
+                    'division_id' => $request->division,
+                    'password' => $request->cedula
+                ]);
+                
+                return json_encode(['status' => true]);
+            }
+            return json_encode(['status' => false]);
+        } catch (\Exeption $e) {
+            return $e;
+        }
+        
+    }
+
+    public function formEditarUsuario(Request $request){
+        try {
+            $data =  User::where('cedula', '=', $request->cedula)->first();
+            $division = Division::get();
+            $rol = Roles::get();
+            return view('admin.user.editar', compact('data', 'division', 'rol'));
+
+        } catch (\Exeption $e) {
+            return $e;
+        }
+    }
+
+    public function editarUsuario (Request $request){
+        try {
+            $buscar_user =  User::where('cedula', '=', $request->cedula)->first();
+            if(isset($buscar_user)){
+                $buscar_user->update([
+                    'cedula' => $request->cedula,
+                    'nombre' => $request->nombre,
+                    'apellido' => $request->apellido,
+                    'username' => $request->username,
+                    'email' => $request->email,
+                    'rol_id' => $request->rol_id,
+                    'division_id' => $request->division_id,
+                    'password' => $request->password,
+                ]);
+                return json_encode(['status' => true, 'data' => $buscar_user]);
+            }
+
+            return json_encode(['status' => false, 'msj' => 'Usuario no existe']);
+            
+        } catch (\Exeption $e) {
+            return $e;
+        }
     }
 }

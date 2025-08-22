@@ -25,8 +25,11 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/usuarios/listados', [UsuariosController::class, 'userList'])->name('userList');
     Route::get('/usuarios/registrar', [UsuariosController::class, 'userRegister'])->name('userRegister');
     Route::post('/usuarios/registrar', [UsuariosController::class, 'registroUser'])->name('registroUser');
-
     Route::post('/buscarLDAP', [UsuariosController::class, '_findUserAdd'])->name('buscarLDAP');
+
+    //ruta para editar usuario 
+    Route::get('/usuarios/editar/{cedula}', [UsuariosController::class, 'formEditarUsuario'])->name('formUpdate');
+    Route::post('/usuarios/editar', [UsuariosController::class, 'editarUsuario'])->name('updateUser');
 });
 
 Route::get('wikiGti', [InformationController::class, 'index'])->name('inicio');

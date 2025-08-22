@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Roles;
 use App\Models\Division;
 use App\Models\Informacion;
+use Illuminate\Support\Facades\Log;
 
 class InformationController extends Controller
 {
@@ -38,12 +39,13 @@ class InformationController extends Controller
                     'message' => 'Content not found'
                 ], 404);
             }
-
+            $name_division = Division::where('id', '=', $validated['division_id'])->pluck('division');
             $updated = $contenido->update([
                 'titulo' => $validated['titulo'],
                 'description' => $validated['contenido'],
                 'user_id' => Auth::id(), // usuario autentificado
                 'division_id' => $validated['division_id'],
+                'url' => str_replace(' ', '_',$name_division[0])."/".str_replace(' ', '_', $validated['titulo']),
             ]);
 
             return response()->json([
@@ -54,7 +56,7 @@ class InformationController extends Controller
 
 
         } catch (\Exception $e) {
-            \Log::error('Error updating content: ' . $e->getMessage());
+            Log::error('Error updating content: ' . $e->getMessage());
 
             return response()->json([
                 'success' => false,
@@ -75,33 +77,35 @@ class InformationController extends Controller
             'contenido' => 'required|string',
             'division_id' => 'required|integer|exists:division,id',
         ]);
-
+        $name_division = Division::where('id', '=', $validated['division_id'])->pluck('division');
         try {
             $create = Informacion::create([
                 'titulo' => $validated['titulo'],
                 'description' => $validated['contenido'],
                 'user_id' => Auth::id(), // usuario autentificado
                 'division_id' => $validated['division_id'],
+                'url' => str_replace(' ', '_',$name_division[0])."/".str_replace(' ', '_', $validated['titulo']),
             ]);
 
             return response()->json([
                 'success' => true,
-                'message' => $create ? 'Content create successfully' : 'Failed to create content',
+                'message' => $create ? 'Contenido creado exitosamente' : 'No se pudo crear contenido',
                 'data' => $create
             ]);
 
 
         } catch (\Exception $e) {
-            \Log::error('Error updating content: ' . $e->getMessage());
+            Log::error('Error al actualizar el contenido: ' . $e->getMessage());
 
             return response()->json([
                 'success' => false,
-                'message' => 'An error occurred while updating content',
+                'message' => 'Se produjo un error al actualizar el contenido.',
                 'error' => config('app.debug') ? $e->getMessage() : null
             ], 500);
         }
     }
 
+    //// Logica para la version publica 
     public function index(){
         $soporte = Informacion::getSoporte();
         $redes = Informacion::getRedes();

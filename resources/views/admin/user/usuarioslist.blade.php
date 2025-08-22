@@ -18,15 +18,6 @@ $heads = [
     ['label' => 'Actions', 'no-export' => true, 'width' => 5],
 ];
 
-$btnEdit = '<button class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
-                <i class="fa fa-lg fa-fw fa-pen"></i>
-            </button>';
-$btnDelete = '<button class="btn btn-xs btn-default text-danger mx-1 shadow" title="Delete">
-                  <i class="fa fa-lg fa-fw fa-trash"></i>
-              </button>';
-$btnDetails = '<button class="btn btn-xs btn-default text-teal mx-1 shadow" title="Details">
-                   <i class="fa fa-lg fa-fw fa-eye"></i>
-               </button>';
 
 $config = [
     'order' => [[0, 'asc']],
@@ -60,34 +51,28 @@ $config = [
                     <td>{{$row['rol']}}</td>
                     <td><nobr>
                         <button class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
-                           <a class="fa fa-lg fa-fw fa-pen" href="/admin/contenido/editor/{{$row['id']}}"></a>
+                           <a class="fa fa-lg fa-fw fa-pen" href="/admin/usuarios/editar/{{$row['cedula']}}"></a>
                         </button>
                         <button class="btn btn-xs btn-default text-danger mx-1 shadow" title="Delete">
                           <i class="fa fa-lg fa-fw fa-trash"></i>
                         </button>
-                        <button class="btn btn-xs btn-default text-teal mx-1 shadow" title="Details">
-                           <i class="fa fa-lg fa-fw fa-eye"></i>
-                       </button></nobr></td>
+                        </td>
                 </tr>
             @endforeach
         </x-adminlte-datatable>
     </div>
 </div>
-<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-    @csrf
-</form>
+
 
 @stop
 
 @section('css')
     {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
-    <link rel="stylesheet" href="/vendor/datatables/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="{{asset('vendor/datatables/css/dataTables.bootstrap4.min.css')}}">
 @stop
 
 @section('js')
-    <script src="/vendor/datatables/js/jquery.dataTables.min.js"></script>
-    <script src="/vendor/ckeditor/ckeditor.js"></script>
-    <script src="https://cdn.ckeditor.com/4.24.0-lts/standard/ckeditor.js"></script>
+    <script src="{{asset('vendor/datatables/js/jquery.dataTables.min.js')}}"></script>
     <script>
         $(document).ready(function() {
             // Initialize DataTables with proper error handling

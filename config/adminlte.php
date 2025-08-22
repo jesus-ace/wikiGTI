@@ -309,8 +309,7 @@ return [
             'type' => 'fullscreen-widget',
             'topnav_right' => true,
         ],
-
-       
+        
         [
             'text' => 'blog',
             'url' => 'admin/blog',

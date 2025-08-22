@@ -7,11 +7,13 @@
 
 
 @section('title', 'Dashboard')
-<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-    @csrf
-</form>
+
 @section('content_header')
     <h1>Editor de contenido</h1>
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        @csrf
+    </form>
+
     <div id="allert-success" class="alert alert-success alert-dismissible d-none">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">×</span>
@@ -64,15 +66,14 @@
 
 @section('css')
     {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
-    <link rel="stylesheet" href="/vendor/bootstrap/js/bootstrap.min.js">
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href=" {{ asset('vendor/bootstrap/js/bootstrap.min.js') }}">
 @stop
 
 @section('js')
 
-<script src="/vendor/tinymce/tinymce.min.js"></script>
+<script src="{{ asset('vendor/tinymce/tinymce.min.js')}}"></script>
 
-<script src="/vendor/jquery/jquery.min.js"></script>
+<script src="{{ asset('vendor/jquery/jquery.min.js')}}"></script>
 
 <script>
     $(document).ready(function() {

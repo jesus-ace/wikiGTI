@@ -10,13 +10,13 @@
             <a class="nav-link active" aria-current="page" href="#">Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Soporte</a>
+            <a class="nav-link" href="#soporte">Soporte</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"> Redes</a>
+            <a class="nav-link" href="#redes"> Redes</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Desarrollo</a>
+            <a class="nav-link" href="#desarrollo">Desarrollo</a>
           </li>
           {{-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

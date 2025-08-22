@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('titulo');
             $table->longText('description');
             $table->unsignedBigInteger('user_id');
+            $table->string('url');
             $table->foreign('user_id')
             ->references('id')
             ->on('usuarios')
