@@ -32,5 +32,5 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::post('/usuarios/editar', [UsuariosController::class, 'editarUsuario'])->name('updateUser');
 });
 
-Route::get('wikiGti', [InformationController::class, 'index'])->name('inicio');
+Route::get('/', [InformationController::class, 'index'])->name('inicio');
 Route::get('wikiGti/{division}/{manual}', [InformationController::class, 'mostrarmanual'])->name('mostrarmanual');

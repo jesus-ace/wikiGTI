@@ -33,7 +33,7 @@
             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
           </li> --}}
         </ul>
-        <a class="btn btn-outline-light" href="/ingresar">Ingresar como Editor</a>
+        <a class="btn btn-outline-light" href="{{ route('login') }}">Ingresar como Editor</a>
         {{-- <form class="d-flex">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
 

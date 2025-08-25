@@ -22,6 +22,7 @@ class UsersSeeder extends Seeder
                 'email' => 'jacevedom@vive.gob.ve',
                 'rol_id' => 1,
                 'division_id' => 3,
+                'status' => 1,
                 'password' => '@J27647120a**'
             ]
         ];

@@ -83,6 +83,7 @@ class UsuariosController extends Controller
                     'email' => $request->correo,
                     'rol_id' => $request->rol,
                     'division_id' => $request->division,
+                    'status' => 1,
                     'password' => $request->cedula
                 ]);
                 

@@ -29,6 +29,7 @@ return new class extends Migration
                     ->references('id')
                     ->on('division')
                     ->onDelete('cascade');
+            $table->boolean('status');
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

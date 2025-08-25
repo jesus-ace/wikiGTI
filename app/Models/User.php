@@ -27,6 +27,7 @@ class User extends Authenticatable
         'email',
         'rol_id',
         'division_id',
+        'status',
         'password'
     ];
 
@@ -59,6 +60,7 @@ class User extends Authenticatable
         return User::select('usuarios.id','cedula','nombre','apellido','username','email', 'division', 'rol')
                    ->leftJoin('rols', 'usuarios.rol_id', 'rols.id')
                    ->leftJoin('division', 'usuarios.division_id', 'division.id')
+                   ->where('status', '=', 1)
                    ->get();
     }
 }

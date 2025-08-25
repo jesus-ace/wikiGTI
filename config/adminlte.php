@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Support\Facades\DB;
 return [
 
     /*
@@ -297,7 +297,6 @@ return [
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Menu-Configuration
     |
     */
-
     'menu' => [
         // Navbar items:
         [
@@ -319,7 +318,6 @@ return [
             'text' => 'Contenidos',
             'url' => 'admin/contenido',
             'icon' => 'far fa-fw fa-file',
-            //'label' => \App\Models\Informacion::getContenidosCountAttribute(), // ✅ Retorna un número
             'label_color' => 'success',
         ],
        

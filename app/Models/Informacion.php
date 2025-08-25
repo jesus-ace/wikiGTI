@@ -79,5 +79,8 @@ class Informacion extends Model
                             ->where('informacion.division_id', '=', 3)
                             ->get();
     }
-
+    
+    public static function getContenidosCountAttribute(){
+        return Informacion::count();
+    }
 }
