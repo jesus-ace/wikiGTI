@@ -11,9 +11,7 @@ Route::post('logout', 'App\Http\Controllers\Auth\LoginController@logout')->name(
 
 
 Route::middleware(['auth'])->prefix('admin')->group(function () {
-        Route::get('/dashboard', function () {
-        return view('welcome');
-    });
+    Route::get('/dashboard', [InformationController::class, 'dashboard']);
     Route::get('/contenido', [InformationController::class, 'listContent']);
     Route::get('/contenido/editor/{id}', [InformationController::class, 'getContent']);
     Route::post('/contenido/update', [InformationController::class, 'updateContenido'])->name('updateContenido'); //se pasa id por request

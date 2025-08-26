@@ -105,6 +105,13 @@ class InformationController extends Controller
         }
     }
 
+    public function dashboard(Request $request){
+        $soporte =  Informacion::where('division_id', '=', 1)->count();
+        $redes =  Informacion::where('division_id', '=', 2)->count();
+        $desarrollo =  Informacion::where('division_id', '=', 3)->count();
+        $total = Informacion::count();
+        return view('welcome', compact('soporte', 'redes', 'desarrollo', 'total'));
+    }
     //// Logica para la version publica 
     public function index(){
         $soporte = Informacion::getSoporte();
